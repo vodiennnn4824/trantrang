@@ -1,19 +1,27 @@
-<form action="<?php $_PHP_SELF ?>" method="POST">
-        a<input type="text" name="a" /><br>
-        b<input type="text" name="b" /><br>
-        <input type="submit" placeholder="Calculator"/>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>nFactorial </title>
+</head>
+<body>
+    <form action="<?php $_PHP_SELF ?>" method="GET">
+        Enter n<input type="text" name="a" />
+        <input type="submit" placeholder="Calculate" />
 
     </form>
 
     <?php
-        
-        if (isset($_POST["a"] , $_POST["b"])) {
-            $a = $_POST["a"];
-            $b = $_POST["b"];
-            echo "Addition: ".($a + $b)."<br>";
-            echo "Substraction: ".($a - $b)."<br>";
-            echo "Multiplication: ".($a * $b)."<br>";
-            echo "Division: ".($a / $b)."<br>";
+        if (isset($_GET["a"])) {
+            $a = $_GET["a"];
+            if ($a == 0 || $a == 1) {
+                echo "$a! = 1";
+            } else {
+                $factorial = 1;
+                for ($i = 2; $i <= $a; $i++) {
+                    $factorial *= $i;
+                }
+                echo "$a! = $factorial";
+            }
         }
-        
     ?>

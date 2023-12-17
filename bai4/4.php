@@ -1,19 +1,24 @@
-<form action="<?php $_PHP_SELF ?>" method="POST">
-        a<input type="text" name="a" /><br>
-        b<input type="text" name="b" /><br>
-        <input type="submit" placeholder="Calculator"/>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cumulative sum</title>
+</head>
+<body>
+    <form action="<?php $_PHP_SELF ?>" method="GET">
+        Enter n<input type="text" name="a" />
+        <input type="submit" placeholder="Calculate" />
 
     </form>
 
-    <?php
+    <?php 
         
-        if (isset($_POST["a"] , $_POST["b"])) {
-            $a = $_POST["a"];
-            $b = $_POST["b"];
-            echo "Addition: ".($a + $b)."<br>";
-            echo "Substraction: ".($a - $b)."<br>";
-            echo "Multiplication: ".($a * $b)."<br>";
-            echo "Division: ".($a / $b)."<br>";
+        if (isset($_GET["a"])) {
+            $a = $_GET["a"];
+            $sum = 0;
+            for ($i = 1; $i <= $a; $i++) {
+                $sum += $i;
+            }
+            echo "Sum = ".$sum;
         }
-        
     ?>
